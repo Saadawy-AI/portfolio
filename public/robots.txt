@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saadawy-ai.github.io/My-Portfolio/sitemap.xml
