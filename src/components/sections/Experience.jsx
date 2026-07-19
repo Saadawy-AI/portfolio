@@ -160,14 +160,23 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  <div className="shrink-0 rounded-xl border border-white/10 px-4 py-2 text-sm text-gray-300">
+                  <div className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200">
                     {item.period} | {item.status}
                   </div>
                 </div>
 
-                <p className="mt-5 leading-7 text-gray-400">{item.summary}</p>
+                <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                  <p className="leading-7 text-gray-400">{item.summary}</p>
+                </div>
 
-                <ul className="mt-5 space-y-3">
+                <div className="mt-5 flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-cyan-400" />
+                  <h4 className="text-sm font-semibold uppercase tracking-[3px] text-gray-300">
+                    Key Highlights
+                  </h4>
+                </div>
+
+                <ul className="mt-3 space-y-3">
                   {item.highlights.map((highlight) => (
                     <li key={highlight} className="flex gap-3 text-sm leading-6 text-gray-300">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
