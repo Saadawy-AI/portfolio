@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import depiImg from "../../assets/certificates/depi-achievement.png";
 import gdgImg from "../../assets/certificates/gdg-ai.png";
-import cleanCodeImg from "../../assets/certificates/clean-code.png";
+import ntiImg from "../../assets/certificates/NTI Certification.jpg";
 import topPerformerImg from "../../assets/certificates/top-performer.png";
 
 const certifications = [
@@ -19,6 +19,19 @@ const certifications = [
   },
 
   {
+    title: "NTI Machine Learning for Data Analysis",
+    issuer: "NTI",
+    date: "2026",
+    subtitle: "Certificate of Achievement",
+    description:
+      "Completed a practical machine learning and data analysis program focused on applying analytical thinking, predictive modeling, and data-driven insights to real-world business problems.",
+    tech: ["Machine Learning", "Data Analysis", "Predictive Modeling", "AI Insights"],
+    badge: "📊",
+    image: ntiImg,
+    link: "https://github.com/Saadawy-AI/Certifications/blob/main/03_NTI_Machine_Learning_for_Data_Analysis_Certificate_of_Achievement.pdf",
+  },
+
+  {
     title: "Build with AI",
     issuer: "Google Developer Groups OnCampus",
     date: "2026",
@@ -29,19 +42,6 @@ const certifications = [
     badge: "🤖",
     image: gdgImg,
     link: "https://github.com/Saadawy-AI/Certifications/blob/main/04_Build_with_AI_GDG_Certificate.pdf",
-  },
-
-  {
-    title: "Clean Code Principles",
-    issuer: "Mahara-Tech / ITI",
-    date: "2026",
-    subtitle: "Certificate of Completion",
-    description:
-      "Strengthened software craftsmanship by learning how to write cleaner, more maintainable, and professional code.",
-    tech: ["Clean Code", "Software Quality", "Best Practices"],
-    badge: "🧼",
-    image: cleanCodeImg,
-    link: "https://github.com/Saadawy-AI/Certifications/blob/main/05_Mahara_Tech_Clean_Code_Certificate.pdf",
   },
 
   {

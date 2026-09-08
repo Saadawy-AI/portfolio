@@ -6,9 +6,45 @@ import { trackEvent } from "../../utils/analytics";
 import ikea from "../../assets/ikea.webp";
 import smartcity from "../../assets/smartcity.webp";
 import road from "../../assets/road.webp";
-import spam from "../../assets/spam.webp";
 
 const projects = [
+  {
+    title: "Big Data Project — Distributed Kubernetes Cluster for NYC FHVHV Trip Duration Prediction",
+    category: "Big Data + Machine Learning",
+    image:
+      "https://raw.githubusercontent.com/Saadawy-AI/fhvhv-distributed-data-cluster/main/Project%20Architecture.jpg",
+    problem:
+      "A distributed Big Data platform was needed to handle the full lifecycle of NYC FHVHV trip data across multiple physical machines instead of a single local environment.",
+    solution:
+      "Built a 4-device Kubernetes (K3s) cluster connected through a private Tailscale mesh network, then deployed Spark, MinIO, Airflow, Kafka, PostgreSQL, JupyterLab, and Streamlit as one integrated platform.",
+    impact:
+      "Created a working end-to-end data platform that distributed processing across 3 Spark worker nodes and enabled ML-driven trip duration prediction with analytics dashboards.",
+    architecture:
+      "NYC TLC Data -> MinIO Bronze -> Spark transformation -> MinIO Silver -> ML / analytics -> MinIO Gold -> Streamlit dashboard, orchestrated by Airflow.",
+    dataset:
+      "NYC TLC FHVHV trip dataset processed in distributed stages with MinIO as the data lake and Spark as the compute engine.",
+    challenges: [
+      "Connecting four separate physical machines into one private Kubernetes cluster.",
+      "Distributing Spark workloads across 3 worker nodes with 32 CPU cores and ~20 GiB RAM in total.",
+      "Coordinating ingestion, orchestration, storage, and analytics across multiple services.",
+    ],
+    learned:
+      "How to design and operate a real distributed Big Data platform where infrastructure, orchestration, and machine learning all work together as a single system.",
+    stack: [
+      "Kubernetes",
+      "K3s",
+      "Spark",
+      "MinIO",
+      "Airflow",
+      "Kafka",
+      "PySpark",
+      "PostgreSQL",
+      "JupyterLab",
+      "Streamlit",
+    ],
+    github: "https://github.com/Saadawy-AI/fhvhv-distributed-data-cluster",
+    demo: "https://fhvhv-distributed-data-cluster.streamlit.app/",
+  },
   {
     title: "IKEA Shopping Analytics Platform",
     category: "Data Engineering + ML + Analytics",
@@ -82,30 +118,6 @@ const projects = [
     stack: ["Python", "CatBoost", "Scikit-learn", "EDA", "Streamlit"],
     github: "https://github.com/Saadawy-AI/Road-Collisions-ML",
     demo: "https://road-collision-severity-app.streamlit.app/",
-  },
-  {
-    title: "Spam Message NLP Classifier",
-    category: "NLP + Machine Learning",
-    image: spam,
-    problem:
-      "Short text messages require reliable preprocessing and classification before they can be flagged as spam or legitimate.",
-    solution:
-      "Implemented cleaning, tokenization, stopword handling, TF-IDF features, Naive Bayes classification, and Streamlit inference.",
-    impact:
-      "Built a complete NLP pipeline that supports fast real-time message classification.",
-    architecture:
-      "Raw message -> text cleaning -> tokenization and lemmatization -> TF-IDF -> Multinomial Naive Bayes -> Streamlit app.",
-    dataset:
-      "Text message classification data with spam and ham labels for supervised NLP training.",
-    challenges: [
-      "Normalizing short, noisy messages before vectorization.",
-      "Balancing simplicity and reliability with TF-IDF and Naive Bayes.",
-      "Packaging vectorizer and model artifacts for repeatable inference.",
-    ],
-    learned:
-      "How classic NLP pipelines can still deliver practical, explainable classification for text applications.",
-    stack: ["Python", "NLTK", "TF-IDF", "Naive Bayes", "Streamlit"],
-    github: "https://github.com/Saadawy-AI/spam-classifier-streamlit",
   },
 ];
 

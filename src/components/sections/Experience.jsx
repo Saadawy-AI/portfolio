@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaDatabase, FaGraduationCap, FaBrain } from "react-icons/fa";
 
@@ -26,6 +27,41 @@ const experiences = [
       "Azure",
       "Hadoop",
       "Hive",
+    ],
+  },
+  {
+    title: "Big Data Trainee",
+    organization: "Huawei ICT Academy-Egypt · Internship",
+    period: "Jul 2026 - Sep 2026",
+    status: "Completed",
+    icon: <FaDatabase className="text-2xl text-cyan-300" />,
+    summary:
+      "Built hands-on Big Data processing workflows using Hadoop, HDFS, MapReduce, YARN, Hive, and Apache Spark for large-scale data processing and analytics, with practical exposure to distributed data systems in Smart Village, Egypt.",
+    highlights: [
+      "Built hands-on Big Data processing workflows using Hadoop, HDFS, MapReduce, YARN, Hive, and Apache Spark for large-scale data processing and analytics.",
+      "Developed data processing solutions with Python, SQL, Jupyter Notebook, and PySpark, applying distributed computing concepts to handle large datasets efficiently.",
+      "Implemented practical batch and streaming data processing concepts using Apache Kafka, Apache Flink, and Apache Flume.",
+      "Worked with HBase, ClickHouse, Elasticsearch, and ZooKeeper to explore NoSQL, analytical databases, search, and distributed coordination in Big Data environments.",
+      "Covered Linux command line, file systems, permissions, SQL, Python fundamentals, and Hadoop ecosystem components including Hive, HBase, and Elasticsearch.",
+    ],
+    stack: [
+      "Hadoop",
+      "HDFS",
+      "MapReduce",
+      "YARN",
+      "Hive",
+      "Spark",
+      "PySpark",
+      "Kafka",
+      "Flink",
+      "Flume",
+      "HBase",
+      "ClickHouse",
+      "Elasticsearch",
+      "ZooKeeper",
+      "Python",
+      "SQL",
+      "Jupyter Notebook",
     ],
   },
   {
@@ -63,6 +99,8 @@ const coursework = [
 ];
 
 export default function Experience() {
+  const [expandedExperience, setExpandedExperience] = useState(null);
+
   return (
     <section id="experience" className="relative overflow-hidden px-6 py-28">
       <div className="pointer-events-none absolute left-0 top-24 h-[360px] w-[360px] rounded-full bg-cyan-500/10 blur-[130px]" />
@@ -90,7 +128,96 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.7fr]">
+        <div className="grid gap-8 lg:grid-cols-2">
+          {experiences.map((item, index) => {
+            const isExpanded = expandedExperience === item.title;
+
+            return (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.12 }}
+                viewport={{ once: true }}
+                className="rounded-2xl border border-cyan-400/10 bg-[#08111f] p-5 transition hover:border-cyan-400/30"
+              >
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cyan-400/10">
+                      {item.icon}
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold">{item.title}</h3>
+                      <p className="mt-1 text-xs text-cyan-300">
+                        {item.organization}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1.5 text-xs text-cyan-200">
+                    {item.period} | {item.status}
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] p-3">
+                  <p className="leading-6 text-sm text-gray-400">{item.summary}</p>
+                </div>
+
+                {isExpanded ? (
+                  <>
+                    <div className="mt-4 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-cyan-400" />
+                      <h4 className="text-[11px] font-semibold uppercase tracking-[3px] text-gray-300">
+                        Key Highlights
+                      </h4>
+                    </div>
+
+                    <ul className="mt-3 space-y-2">
+                      {item.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-3 text-sm leading-6 text-gray-300">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {item.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-lg border border-gray-700 px-2.5 py-1 text-[10px] text-gray-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setExpandedExperience(null)}
+                        className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:border-cyan-400/40 hover:bg-cyan-400/20"
+                      >
+                        Hide Details
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="mt-5 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setExpandedExperience(item.title)}
+                      className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-300 transition hover:border-cyan-400/40 hover:bg-cyan-400/20"
+                    >
+                      Details
+                    </button>
+                  </div>
+                )}
+              </motion.article>
+            );
+          })}
+
           <motion.div
             initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -135,69 +262,6 @@ export default function Experience() {
               </div>
             </div>
           </motion.div>
-
-          <div className="space-y-6">
-            {experiences.map((item, index) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.12 }}
-                viewport={{ once: true }}
-                className="rounded-2xl border border-cyan-400/10 bg-[#08111f] p-7 transition hover:border-cyan-400/30"
-              >
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-cyan-400/10">
-                      {item.icon}
-                    </div>
-
-                    <div>
-                      <h3 className="text-2xl font-bold">{item.title}</h3>
-                      <p className="mt-1 text-sm text-cyan-300">
-                        {item.organization}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200">
-                    {item.period} | {item.status}
-                  </div>
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                  <p className="leading-7 text-gray-400">{item.summary}</p>
-                </div>
-
-                <div className="mt-5 flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400" />
-                  <h4 className="text-sm font-semibold uppercase tracking-[3px] text-gray-300">
-                    Key Highlights
-                  </h4>
-                </div>
-
-                <ul className="mt-3 space-y-3">
-                  {item.highlights.map((highlight) => (
-                    <li key={highlight} className="flex gap-3 text-sm leading-6 text-gray-300">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {item.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-lg border border-gray-700 px-3 py-1 text-xs text-gray-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.article>
-            ))}
-          </div>
         </div>
       </div>
     </section>

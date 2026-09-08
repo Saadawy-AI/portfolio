@@ -64,9 +64,9 @@ export default function Hero() {
                 sequence={[
                   "Data Engineer",
                   1800,
-                  "Machine Learning Engineer",
+                  "Big Data Engineer",
                   1800,
-                  "Cloud Analytics Builder",
+                  "Machine Learning Engineer",
                   1800,
                 ]}
                 speed={50}
